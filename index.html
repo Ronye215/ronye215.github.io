@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Cumpleaños de Sofía</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #3407d6 0%, #f8cfa3 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .invitacion {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            max-width: 700px;
+            width: 80%;
+            max-height: 800px; /* Altura máxima */
+            height: 80%; /* 90% de la altura disponible */
+            overflow-y: auto; /* Agrega scroll si el contenido excede la altura */
+        }
+        h1 {
+            color: #402ae6;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #7261f3;
+            font-size: 2em;
+            margin: 15px 0;
+        }
+        p {
+            color: #333;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+        .fecha {
+            font-weight: bold;
+            color: #4a4a4a;
+            font-size: 1.3em;
+            margin: 15px 0;
+        }
+        .emoji {
+            font-size: 50px;
+            margin: 15px 0;
+        }
+        .detalles {
+            background-color: #e4e1ff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .boton {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #5c47f5;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+        .boton:hover {
+            background-color: #6d5de2a4;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            p, .fecha, .boton {
+                font-size: 1em;
+            }
+            .emoji {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            p, .fecha, .boton {
+                font-size: 0.9em;
+            }
+            .emoji {
+                font-size: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invitacion">
+        <div class="emoji">🎉🎂🎈</div>
+        <h1>¡Es hora de celebrar!</h1>
+        <h2>Jonathan cumple 22 añotes</h2>
+        <p>Te invito a una fiesta inolvidable llena de alegría, música y sorpresas</p>
+        <div class="fecha">Sábado, 15 de julio de 2024</div>
+        <div class="detalles">
+            <p><strong>Hora:</strong> 20:00 hrs</p>
+            <p><strong>Lugar:</strong> Salón de Eventos "El Paraíso"</p>
+            <p><strong>Dirección:</strong> Av. de las Flores 123, Ciudad Jardín</p>
+        </div>
+        <p>¡No faltes a esta noche mágica donde celebraremos la vida y la amistad!</p>
+        <a href="#" class="boton">Confirmar asistencia</a>
+        <div class="emoji">🥳🍰🎁</div>
+    </div>
+</body>
+</html>
