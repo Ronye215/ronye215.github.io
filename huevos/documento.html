@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Huevos Frescos</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .header {
+            text-align: center;
+            color: #2c5f2d;
+            margin-bottom: 30px;
+        }
+        .info-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .precio-destacado {
+            color: #2c5f2d;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .horario {
+            margin: 10px 0;
+        }
+        .direccion {
+            font-size: 1.1em;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #e8f5e9;
+            border-radius: 5px;
+        }
+        #qrcode {
+            margin: 20px auto;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .qr-instruction {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🥚 Venta de Huevos Frescos 🥚</h1>
+    </div>
 
+    <div class="info-section">
+        <h2>Precios y Horarios</h2>
+        
+        <div class="horario">
+            <p><span class="precio-destacado">Q34.00</span> - Lunes a Viernes</p>
+            <p>⏰ 18:00 - 22:00 horas</p>
+        </div>
+
+        <div class="horario">
+            <p><span class="precio-destacado">Q34.00</span> - Sábado</p>
+            <p>⏰ 9:00 - 15:00 horas</p>
+        </div>
+
+        <div class="horario" style="color: #d32f2f;">
+            <p><span class="precio-destacado">¡OFERTA DOMINGO! Q30.00</span></p>
+            <p>⏰ 17:00 - 22:00 horas</p>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h2>Dirección y Contacto</h2>
+        <div class="direccion">
+            📍 Lote 9, manzana 6, sector 4
+        </div>
+        <div id="qrcode"></div>
+        <div class="qr-instruction">Escanea el código para visitar nuestra página web</div>
+    </div>
+
+    <script>
+        // Generar QR
+        const qr = new QRCode(document.getElementById("qrcode"), {
+            text: "https://ronye215.github.io/huevos/",
+            width: 200,
+            height: 200,
+            colorDark: "#2c5f2d",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+        
+        // Agregar enlace debajo del QR
+        const qrContainer = document.getElementById("qrcode");
+        const link = document.createElement("a");
+        link.href = "https://ronye215.github.io/huevos/";
+        link.textContent = "ronye215.github.io/huevos";
+        link.style.display = "block";
+        link.style.marginTop = "10px";
+        qrContainer.appendChild(link);
+    </script>
+</body>
+</html>
