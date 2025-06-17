@@ -23,7 +23,7 @@ const movies = [
   {
     title: 'Destino final Lazos de sangre',
     driveId: '1SwapVM4w_R4NCeZ4S8Mqp7Ker4LdyK6y'
-  }
+  },
   // Agrega más objetos según necesites
 ];
 
