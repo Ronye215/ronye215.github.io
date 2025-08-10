@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación | Cumpleaños de Danna</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f0f13;
+      --card: #151822;
+      --text: #eef0f6;
+      --muted: #b7bed3;
+      --accent-1: #7c3aed; /* purple */
+      --accent-2: #06b6d4; /* cyan */
+      --accent-3: #e11d74; /* fuchsia */
+      --glass: rgba(255,255,255,0.06);
+      --glow: 0 0 30px rgba(124,58,237,0.35), 0 0 18px rgba(6,182,212,0.25), 0 0 12px rgba(225,29,116,0.25);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 80% 10%, rgba(124,58,237,0.12), transparent 60%),
+                  radial-gradient(1000px 800px at 10% 90%, rgba(6,182,212,0.14), transparent 60%),
+                  linear-gradient(180deg, #0e0f14 0%, #0a0b10 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1080px; margin: 0 auto; padding: 24px; }
+
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 12px 8px 8px; position: sticky; top: 0; backdrop-filter: blur(8px);
+      background: linear-gradient(to bottom, rgba(10,11,16,0.8), rgba(10,11,16,0));
+      z-index: 5;
+    }
+
+    .brand {
+      display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.3px;
+    }
+    .logo {
+      width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2) 60%, var(--accent-3));
+      box-shadow: var(--glow);
+    }
+
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; color: var(--text);
+      background: linear-gradient(135deg, rgba(124,58,237,0.18), rgba(6,182,212,0.18)); border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset;
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.95;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 28px; align-items: center;
+      padding: 32px 8px 8px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 56px); margin: 6px 0 8px; line-height: 1.06;
+      background: linear-gradient(180deg, #fff, #c9d1ee 55%, #b0bad6);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      text-shadow: 0 4px 40px rgba(124,58,237,0.35);
+    }
+
+    .gradient-name { 
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      text-shadow: 0 2px 22px rgba(6,182,212,0.35);
+    }
+
+    .lead { color: var(--muted); font-size: clamp(16px, 2vw, 18px); line-height: 1.65; margin-bottom: 16px; }
+    .badge-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 16px; box-shadow: var(--glow);
+    }
+
+    .panel {
+      background: var(--glass); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 18px; color: var(--text);
+    }
+
+    .intro-card {
+      position: relative; overflow: hidden; min-height: 280px; display: grid; place-items: center; text-align: center;
+    }
+    .intro-card::before {
+      content: ""; position: absolute; inset: -40%; background:
+        radial-gradient(400px 200px at 15% 30%, rgba(124,58,237,0.22), transparent 60%),
+        radial-gradient(300px 220px at 85% 80%, rgba(6,182,212,0.22), transparent 62%),
+        radial-gradient(260px 200px at 70% 20%, rgba(225,29,116,0.22), transparent 62%);
+      filter: blur(20px); z-index: 0; opacity: 0.85;
+    }
+    .intro-content { position: relative; z-index: 1; }
+
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 12px; }
+    .btn {
+      padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; color: white; font-weight: 600;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); box-shadow: var(--glow);
+    }
+    .btn.secondary { background: transparent; color: var(--text); }
+
+    /* Details */
+    .details {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px;
+    }
+    .detail h4 { margin: 6px 0 4px; font-size: 14px; color: #cfd6ef; text-transform: uppercase; letter-spacing: 0.12em; }
+    .detail p { margin: 0; font-size: 16px; }
+
+    /* Invitation section */
+    .invite { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: center; }
+    .invite-card { padding: 22px; }
+    .invite h2 { font-size: clamp(26px, 3.2vw, 34px); margin: 0 0 12px; }
+    .invite .quote { color: var(--muted); margin: 0 0 16px; font-style: italic; }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent); margin: 14px 0; }
+
+    /* Footer */
+    footer { text-align: center; color: #93a0c6; padding: 24px 8px 40px; font-size: 13px; }
+
+    /* Responsive */
+    @media (max-width: 940px) { .hero { grid-template-columns: 1fr; } .invite { grid-template-columns: 1fr; } .details { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .details { grid-template-columns: 1fr; } .invite-card { padding: 16px; } }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="brand">
+      <div class="logo"></div>
+      <div>Invitación • Cumple de Danna</div>
+    </div>
+    <div class="pill" id="rsvpPill">RSVP abierto</div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="intro card intro-card animate__animated animate__fadeInUp">
+        <div class="intro-content">
+          <div class="pill" id="greetingPill">Para <span id="invitee-pill">Invitado/a</span></div>
+          <h1>¡Hola <span class="gradient-name" id="invitee-name">Invitado/a</span>!</h1>
+          <p class="lead" id="personal-message">Eres parte importante de nuestras vidas y queremos que formes parte de un día muy especial: el cumpleaños de Danna. Preparamos esta invitación personalizada solo para ti.</p>
+          <div class="cta-row">
+            <button class="btn" id="scrollToInvite">Ver invitación</button>
+            <button class="btn secondary" id="copyLink">Copiar enlace personal</button>
+          </div>
+          <div class="badge-row">
+            <span class="pill">Evento familiar</span>
+            <span class="pill">Ambiente alegre</span>
+            <span class="pill">Dress code: casual</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel card animate__animated animate__fadeInUp animate__delay-1s">
+        <h3 style="margin-top:4px">Sobre el evento</h3>
+        <p style="color:var(--muted); margin-top:8px">Acompáñanos a celebrar el cumpleaños de Danna. Hemos preparado una reunión con mucha alegría, música y un ambiente acogedor para compartir entre amigos y familia.</p>
+        <div class="details">
+          <div class="detail">
+            <h4>Fecha</h4>
+            <p id="dateText">16 de agosto</p>
+          </div>
+          <div class="detail">
+            <h4>Hora</h4>
+            <p id="timeText">12:00 horas</p>
+          </div>
+          <div class="detail">
+            <h4>Lugar</h4>
+            <p id="placeText">Lote 12a, sector central, aldea Las Canoas, Zona 25</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="invite" class="invite">
+      <div class="card invite-card animate__animated animate__fadeInUp">
+        <h2>Invitación oficial</h2>
+        <p class="quote">“Acompáñanos a celebrar el cumpleaños de Danna.”</p>
+        <div class="divider"></div>
+        <p style="margin: 0 0 12px">Fecha: <strong id="dateText2">16 de agosto</strong></p>
+        <p style="margin: 0 0 12px">Hora: <strong id="timeText2">12:00 horas</strong></p>
+        <p style="margin: 0 0 16px">Dirección: <strong id="placeText2">Lote 12a, sector central, aldea Las Canoas, Zona 25</strong></p>
+        <div class="cta-row">
+          <a id="rsvpLink" class="btn" href="#" target="_blank" rel="noopener">Confirmar asistencia</a>
+          <button class="btn secondary" id="addToCalendar">Añadir al calendario</button>
+        </div>
+        <p id="deadlineText" style="color: var(--muted); margin-top: 10px">Por favor confirma a más tardar el miércoles 13.</p>
+      </div>
+      <div class="panel animate__animated animate__fadeInUp animate__delay-1s">
+        <h3 style="margin-top:4px">¿Cómo personalizamos?</h3>
+        <ol style="line-height:1.8; color: var(--muted); padding-left:18px;">
+          <li>Usa el parámetro <code>?name=Tu%20Nombre</code> en el enlace para mostrar el nombre de la persona invitada y un mensaje dedicado.</li>
+          <li>Opcional: agrega <code>&msg=Mensaje%20corto</code> para un saludo especial. También <code>&rsvp=5551234567</code> para WhatsApp.</li>
+          <li>Puedes duplicar el enlace para cada invitado y enviarlo por WhatsApp, correo o como QR.</li>
+        </ol>
+        <div class="divider"></div>
+        <p style="margin:0; color: var(--muted);">Ejemplo rápido: <code>https://tusitio.com/danna.html?name=Karla&msg=¡Te%20esperamos!&rsvp=5551234567</code></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Hecho con cariño para Danna • Personalizable con tus colores favoritos: morado, cian y fucsia
+  </footer>
+
+  <script>
+    // Configuración del evento (edita aquí si cambia algo)
+    const EVENT = {
+      title: "Cumpleaños de Danna",
+      dateText: "16 de agosto",
+      timeText: "12:00 horas",
+      placeText: "Lote 12a, sector central, aldea Las Canoas, Zona 25",
+      deadlineText: "Por favor confirma a más tardar el miércoles 13.",
+      // Para el botón de calendario
+      startISO: "2025-08-16T12:00:00",
+      endISO: "2025-08-16T16:00:00",
+      description: "Acompáñanos a celebrar el cumpleaños de Danna."
+    };
+
+    // Leer parámetros de la URL
+    const params = new URLSearchParams(window.location.search);
+    const invitee = (params.get('name') || 'Invitado/a').trim();
+    const msgParam = params.get('msg');
+    const rsvpPhone = (params.get('rsvp') || '').replace(/\D/g, '');
+
+    // Personalización de textos
+    const message = msgParam ? decodeURIComponent(msgParam) : `Nos encantaría contar con tu presencia para celebrar juntos.`;
+    document.getElementById('invitee-pill').textContent = invitee;
+    document.getElementById('invitee-name').textContent = invitee;
+    document.getElementById('personal-message').textContent = message + ' Esta página fue preparada especialmente para ti.';
+
+    // Cargar datos del evento en la UI
+    for (const id of ['dateText','dateText2']) document.getElementById(id).textContent = EVENT.dateText;
+    for (const id of ['timeText','timeText2']) document.getElementById(id).textContent = EVENT.timeText;
+    for (const id of ['placeText','placeText2']) document.getElementById(id).textContent = EVENT.placeText;
+    document.getElementById('deadlineText').textContent = EVENT.deadlineText;
+
+    // RSVP link (WhatsApp si hay teléfono, si no: copia texto genérico)
+    const rsvpBtn = document.getElementById('rsvpLink');
+    const rsvpMsg = encodeURIComponent(`Hola, confirmo asistencia al ${EVENT.title}. Soy ${invitee}.`);
+    if (rsvpPhone) {
+      rsvpBtn.href = `https://wa.me/${rsvpPhone}?text=${rsvpMsg}`;
+      rsvpBtn.textContent = 'Confirmar por WhatsApp';
+      document.getElementById('rsvpPill').textContent = 'RSVP por WhatsApp';
+    } else {
+      rsvpBtn.href = '#';
+      rsvpBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigator.clipboard.writeText(`Confirmo asistencia: ${invitee}`)
+          .then(()=>{
+            rsvpBtn.textContent = '¡Copiado! Pega en tu chat';
+            setTimeout(()=> rsvpBtn.textContent = 'Confirmar asistencia', 1400);
+          });
+      });
+    }
+
+    // Scroll a la invitación
+    document.getElementById('scrollToInvite').addEventListener('click', () => {
+      document.getElementById('invite').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // Copiar enlace personal con los parámetros actuales (o agregarlos si faltan)
+    document.getElementById('copyLink').addEventListener('click', async () => {
+      const url = new URL(window.location.href);
+      url.searchParams.set('name', invitee);
+      if (msgParam) url.searchParams.set('msg', msgParam);
+      if (rsvpPhone) url.searchParams.set('rsvp', rsvpPhone);
+      await navigator.clipboard.writeText(url.toString());
+      const btn = document.getElementById('copyLink');
+      const old = btn.textContent; btn.textContent = '¡Enlace copiado!';
+      setTimeout(()=> btn.textContent = old, 1400);
+    });
+
+    // Add to calendar (archivo .ics en memoria)
+    document.getElementById('addToCalendar').addEventListener('click', () => {
+      const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Invitacion Danna//ES\nBEGIN:VEVENT\nUID:${Date.now()}@danna\nDTSTAMP:${toICS(new Date())}\nDTSTART:${toICS(new Date(EVENT.startISO))}\nDTEND:${toICS(new Date(EVENT.endISO))}\nSUMMARY:${escapeICS(EVENT.title)}\nDESCRIPTION:${escapeICS(EVENT.description)}\nLOCATION:${escapeICS(EVENT.placeText)}\nEND:VEVENT\nEND:VCALENDAR`;
+      const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'invitacion-danna.ics'; a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1500);
+    });
+
+    function toICS(d){
+      const pad = (n)=> String(n).padStart(2,'0');
+      return `${d.getUTCFullYear()}${pad(d.getUTCMonth()+1)}${pad(d.getUTCDate())}T${pad(d.getUTCHours())}${pad(d.getUTCMinutes())}${pad(d.getUTCSeconds())}Z`;
+    }
+    function escapeICS(s){ return String(s).replace(/[\\,;]/g, (m)=>({"\\":"\\\\", ",":"\\,",";":"\\;"}[m])); }
+  </script>
+</body>
+</html>
