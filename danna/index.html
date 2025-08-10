@@ -186,21 +186,11 @@
         </div>
         <p id="deadlineText" style="color: var(--muted); margin-top: 10px">Por favor confirma a más tardar el miércoles 13.</p>
       </div>
-      <div class="panel animate__animated animate__fadeInUp animate__delay-1s">
-        <h3 style="margin-top:4px">¿Cómo personalizamos?</h3>
-        <ol style="line-height:1.8; color: var(--muted); padding-left:18px;">
-          <li>Usa el parámetro <code>?name=Tu%20Nombre</code> en el enlace para mostrar el nombre de la persona invitada y un mensaje dedicado.</li>
-          <li>Opcional: agrega <code>&msg=Mensaje%20corto</code> para un saludo especial. También <code>&rsvp=5551234567</code> para WhatsApp.</li>
-          <li>Puedes duplicar el enlace para cada invitado y enviarlo por WhatsApp, correo o como QR.</li>
-        </ol>
-        <div class="divider"></div>
-        <p style="margin:0; color: var(--muted);">Ejemplo rápido: <code>https://tusitio.com/danna.html?name=Karla&msg=¡Te%20esperamos!&rsvp=5551234567</code></p>
-      </div>
     </section>
   </main>
 
   <footer>
-    Hecho con cariño para Danna • Personalizable con tus colores favoritos: morado, cian y fucsia
+    Hecho con cariño para Danna
   </footer>
 
   <script>
@@ -237,7 +227,7 @@
 
     // RSVP link (WhatsApp si hay teléfono, si no: copia texto genérico)
     const rsvpBtn = document.getElementById('rsvpLink');
-    const rsvpMsg = encodeURIComponent(`Hola, confirmo asistencia al ${EVENT.title}. Soy ${invitee}.`);
+    const rsvpMsg = encodeURIComponent(`Hola! Confirmo mi asistencia el sabado 16 de agosto.      Att. ${invitee}.`);
     if (rsvpPhone) {
       rsvpBtn.href = `https://wa.me/${rsvpPhone}?text=${rsvpMsg}`;
       rsvpBtn.textContent = 'Confirmar por WhatsApp';
